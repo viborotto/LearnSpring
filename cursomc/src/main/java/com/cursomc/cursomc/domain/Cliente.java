@@ -1,6 +1,7 @@
 package com.cursomc.cursomc.domain;
 
 import com.cursomc.cursomc.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class Cliente {
     @Column
     private Integer tipo;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 

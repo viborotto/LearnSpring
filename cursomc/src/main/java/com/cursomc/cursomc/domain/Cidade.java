@@ -1,5 +1,7 @@
 package com.cursomc.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Cidade {
     private String nome;
 
     //como saber de que lado fica o Join???
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "estado_id") //chave estrangeira na cidade
     private Estado estado;
