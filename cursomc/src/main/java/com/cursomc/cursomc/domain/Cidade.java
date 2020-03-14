@@ -1,6 +1,8 @@
 package com.cursomc.cursomc.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Cidade {
@@ -15,6 +17,9 @@ public class Cidade {
     @ManyToOne
     @JoinColumn(name = "estado_id") //chave estrangeira na cidade
     private Estado estado;
+
+//    @OneToMany(mappedBy = "cidade")
+//    private List<Endereco> enderecos = new ArrayList<>();
 
     public Cidade() {
     }
