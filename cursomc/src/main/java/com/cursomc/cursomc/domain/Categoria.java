@@ -1,5 +1,7 @@
 package com.cursomc.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,8 +19,8 @@ public class Categoria implements Serializable {
 
     //tem uma lista de produtos
     //associacao relacional e instanciacao
-
     //desse lado eu referencio o outro lado do Join, mapeando
+    @JsonManagedReference
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 
