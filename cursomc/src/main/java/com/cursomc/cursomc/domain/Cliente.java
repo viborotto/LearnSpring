@@ -1,6 +1,8 @@
 package com.cursomc.cursomc.domain;
 
 import com.cursomc.cursomc.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -36,6 +38,8 @@ public class Cliente {
     @CollectionTable(name = "telefone")
     private Set<String> telefones = new HashSet<>();
 
+//    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private  List<Pedido> pedidos = new ArrayList<>();
 

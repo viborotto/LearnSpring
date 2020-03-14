@@ -16,7 +16,7 @@ public class Cidade {
     private String nome;
 
     //como saber de que lado fica o Join???
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "estado_id") //chave estrangeira na cidade
     private Estado estado;

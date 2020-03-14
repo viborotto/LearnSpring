@@ -1,6 +1,7 @@
 package com.cursomc.cursomc.domain;
 
 import com.cursomc.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public abstract class Pagamento { //abstract para garantir que eu nao consiga in
     private Integer estado;
 
     @JsonIgnore
+//    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "pedido_id")//em um lado eu coloco o Join e no outro mappedBy
     @MapsId

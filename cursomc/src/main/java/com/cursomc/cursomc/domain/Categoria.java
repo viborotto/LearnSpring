@@ -20,7 +20,7 @@ public class Categoria implements Serializable {
     //tem uma lista de produtos
     //associacao relacional e instanciacao
     //desse lado eu referencio o outro lado do Join, mapeando
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 

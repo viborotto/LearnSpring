@@ -1,8 +1,16 @@
 package com.cursomc.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+@Entity
 public class ItemPedido {
 
     //atributo composto
+    @JsonIgnore
+    @EmbeddedId
     private ItemPedidoPK id = new ItemPedidoPK();
 
     private Double desconto;
@@ -20,6 +28,7 @@ public class ItemPedido {
         Preco = preco;
     }
 
+    @JsonIgnore
     public Pedido getPedido(){
         return id.getPedido();
     }
