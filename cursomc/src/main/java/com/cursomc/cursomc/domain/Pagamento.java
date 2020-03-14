@@ -1,19 +1,22 @@
 package com.cursomc.cursomc.domain;
 
 import com.cursomc.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
-public class Pagamento {
+@Inheritance(strategy = InheritanceType.JOINED)//herança, gerar uma tabela de pagamento pra cada subclasse
+public abstract class Pagamento { //abstract para garantir que eu nao consiga instanciar objetos do tipo Pagamento diretamente
 
     //tem que ter mesmo id que o pedido
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private EstadoPagamento estado;
+    private Integer estado;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")//em um lado eu coloco o Join e no outro mappedBy
     @MapsId
@@ -22,8 +25,9 @@ public class Pagamento {
     public Pagamento(){}
 
     public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+        super();
         this.id = id;
-        this.estado = estado;
+        this.estado = estado.getCod();
         this.pedido = pedido;
     }
 
@@ -36,11 +40,11 @@ public class Pagamento {
     }
 
     public EstadoPagamento getEstado() {
-        return estado;
+        return EstadoPagamento.toEnum(estado);
     }
 
     public void setEstado(EstadoPagamento estado) {
-        this.estado = estado;
+        this.estado = estado.getCod();
     }
 
     public Pedido getPedido() {

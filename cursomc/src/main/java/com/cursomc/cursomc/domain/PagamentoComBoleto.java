@@ -2,8 +2,10 @@ package com.cursomc.cursomc.domain;
 
 import com.cursomc.cursomc.domain.enums.EstadoPagamento;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
 public class PagamentoComBoleto extends Pagamento {
 
     private Date dataVencimento;
