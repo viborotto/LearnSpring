@@ -1,4 +1,4 @@
-package com.cursomc.cursomc.resources;
+package com.cursomc.cursomc.controller;
 
 import com.cursomc.cursomc.domain.Categoria;
 import com.cursomc.cursomc.service.CategoriaService;
@@ -9,29 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-
+//ResponseEntity encapsula os dados de retorno
+// represents the whole HTTP response: status code, headers, and body
+//https://www.baeldung.com/spring-response-entity
 @RestController
 @RequestMapping(value = "/categorias")
-public class CategoriaResource {
+public class CategoriaController {
 
     @Autowired
-    private CategoriaService service;
+    private CategoriaService categoriaService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id){
     //vai retornar uma lista de categorias
 
-        Categoria obj = service.buscar(id);
-        return ResponseEntity.ok().body(obj);
-//        Categoria cat1 = new Categoria(1,"Informatica");
-//        Categoria cat2 = new Categoria(2,"Escritorio");
-//
-//        List<Categoria> lista = new ArrayList<>();
-//        lista.add(cat1);
-//        lista.add(cat2);
-//
-//        return lista;
+        Categoria categoria = categoriaService.buscar(id);
+        return ResponseEntity.ok().body(categoria);
     }
 }

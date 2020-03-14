@@ -11,11 +11,11 @@ import java.util.Optional;
 public class CategoriaService {
 
     @Autowired
-    private CategoriaRepository repo;
+    private CategoriaRepository categoriaRepository;
 
-    //chamar o repository
+    //chamar o repository para servir o GET
     public Categoria buscar(Integer id){
-        Optional<Categoria> obj = repo.findById(id);
-        return obj.orElse(null);
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
+        return categoria.orElse(null);
     }
 }

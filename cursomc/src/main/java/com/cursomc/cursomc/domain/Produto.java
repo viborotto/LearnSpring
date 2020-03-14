@@ -15,8 +15,9 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
+    //esse jointable é para criar uma tabela intermediária só de fk
     @ManyToMany
-    @JoinTable(name = "produtoCat",
+    @JoinTable(name = "PRODUTO_CATEGORIA",
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
 
